@@ -249,7 +249,7 @@ public:
 
 	vectorMapEntranceCondition	m_EntranceCondition;				// 맵 입장시 필요한 요구 사항들 (현재는 아이템) - 초기에 설정함 동기화 필요 없음
 	// end 2011-10-28 by hskim, EP4 [트리거 시스템] - 크리스탈 시스템
-private:
+public:
 	map<UINT, CShopInfo*>		m_mapShopInfo;								// BuildingIndex -> CShopInfo
 	CShopInfo* m_CashShopInfo;
 };
