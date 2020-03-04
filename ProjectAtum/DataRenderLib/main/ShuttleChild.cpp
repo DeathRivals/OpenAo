@@ -12053,7 +12053,7 @@ void CShuttleChild::ChangeBodyConditionFromServer(BodyCond_t hyBodyCondition)
                         CAppEffectData* pEffect = g_pScene->FindEffect( RC_EFF_BOOSTER );
                         if(pEffect == NULL)
                         {
-                            pEffect = new CAppEffectData(g_pCamera,RC_EFF_BOOSTER,100);
+                            pEffect = new CAppEffectData(g_pCamera,RC_EFF_BOOSTER, 50, 0, 0, 5);// 04-03-2020 fix for booster effect on high fov
                             g_pD3dApp->m_pEffectList->AddChild(pEffect);
                         }
                     }

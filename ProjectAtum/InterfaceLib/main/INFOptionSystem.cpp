@@ -2013,20 +2013,22 @@ void CINFOptionSystem::UpdateBtnPos(int nBackPosX, int nBackPosY)
 		int nMainId = 0;	
 		for(nMainId = 0;nMainId < MAX_VEDIO_OPTION_RADIO;nMainId++)
 		{
-			//NEMERIAN GUSS TODO: replace constant with preprocessor value
-			if (nMainId >= 4) {
-				nPosX = nBackPosX + OPTION_RADIO_VEDIO_INFO_X+50 + nMainWidth / 2;
-				nPosY = nBackPosY + OPTION_RADIO_VEDIO_INFO_Y + ((nMainId-4)*OPTION_RADIO_GAME_INFO_CAP_Y);
-			}
-			else {
-				nPosX = nBackPosX + OPTION_RADIO_VEDIO_INFO_X / 2 + nMainWidth / 2;
-				nPosY = nBackPosY + OPTION_RADIO_VEDIO_INFO_Y + (nMainId*OPTION_RADIO_GAME_INFO_CAP_Y);
-			}
+			//nPosX = nBackPosX + OPTION_RADIO_VEDIO_INFO_X +  nMainWidth / 2;
+			//nPosY = nBackPosY + OPTION_RADIO_VEDIO_INFO_Y+ ( nMainId*OPTION_RADIO_GAME_INFO_CAP_Y );
+		if (nMainId >= 4) {
+			nPosX = nBackPosX + OPTION_RADIO_VEDIO_INFO_X + 50 + nMainWidth / 2;
+			nPosY = nBackPosY + OPTION_RADIO_VEDIO_INFO_Y + ((nMainId - 4) * OPTION_RADIO_GAME_INFO_CAP_Y);
+				
+		}
+		else {
+			nPosX = nBackPosX + OPTION_RADIO_VEDIO_INFO_X / 2 + nMainWidth / 2;
+			nPosY = nBackPosY + OPTION_RADIO_VEDIO_INFO_Y + (nMainId * OPTION_RADIO_GAME_INFO_CAP_Y);
+				
+		}
 			m_pGameVedioOpRadioBtn[nMainId]->SetPosition(nPosX, nPosY, 60);
 		}
 		{
-			m_pFovBar->SetPosition(nBackPosX + OPTION_VIDEO_FOV_POS_X, nBackPosY + OPTION_RADIO_VEDIO_INFO_Y + (4*OPTION_RADIO_GAME_INFO_CAP_Y) + 5, OPTION_VIDEO_FOV_SIZE_X, OPTION_VIDEO_FOV_SIZE_Y);
-			RECT rect =
+			m_pFovBar->SetPosition(nBackPosX + OPTION_VIDEO_FOV_POS_X, nBackPosY + OPTION_RADIO_VEDIO_INFO_Y + (4 * OPTION_RADIO_GAME_INFO_CAP_Y) + 5, OPTION_VIDEO_FOV_SIZE_X, OPTION_VIDEO_FOV_SIZE_Y);			RECT rect =
 			{
 				nBackPosX + OPTION_VIDEO_FOV_POS_X,
 				nBackPosY + OPTION_RADIO_VEDIO_INFO_Y + ((nMainId - 4)*OPTION_RADIO_GAME_INFO_CAP_Y) + 5,
@@ -2273,6 +2275,7 @@ int CINFOptionSystem::OnLButtonDown(WPARAM wParam, LPARAM lParam)
 				UpdateOptionInterface(&m_struOpInfo);
 				if( i == SOUND_OPTION_TAB )
 				{
+					//structOptionGameInfo* pOptionInfo = &m_struOpInfo;
 					//int nVol = - ( pOptionInfo->struSOptionSetup.sSoundVolume / 100 );
 					// 2012-03-13 by mspark, 게임 사운드 옵션 문제 해결
 					int nVol = (SOUND_SCROLL_RETURN + m_struOpInfo.struSOptionSetup.sSoundVolume) / 100;
@@ -3675,11 +3678,11 @@ int CINFOptionSystem::OnVedioLButtonUp(WPARAM wParam, LPARAM lParam)
 				FLOAT fAspect = ((FLOAT)g_pD3dApp->m_d3dsdBackBuffer.Width) / g_pD3dApp->m_d3dsdBackBuffer.Height;
 				float fovModifier = 3 - nNewFov;
 
-				char message[256];
-				sprintf(message, "option change fov value: %f(3-%f)(%d)", fovModifier, nNewFov, m_pFovBar->GetScrollStep());
-				g_pD3dApp->m_pChat->CreateChatChild(message, COLOR_TRADE);
+				//char message[256];
+				//sprintf(message, "option change fov value: %f(3-%f)(%d)", fovModifier, nNewFov, m_pFovBar->GetScrollStep());
+				//g_pD3dApp->m_pChat->CreateChatChild(message, COLOR_TRADE);
 
-				g_pD3dApp->m_pCamera->SetProjParams(D3DX_PI / fovModifier, fAspect, 1.0f, 100000.0f);
+				g_pD3dApp->m_pCamera->SetProjParams(D3DX_PI / fovModifier, fAspect, 1.0f, 100000.0f)
 			}
 		}
 		return INF_MSGPROC_BREAK;
